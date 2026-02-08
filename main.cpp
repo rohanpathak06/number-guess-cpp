@@ -21,13 +21,13 @@ public:
     }
 
     void displayWelcome() {
-        cout << "\n╔════════════════════════════════════════╗\n";
-        cout << "║   🎮 NUMBER GUESSING GAME 🎮          ║\n";
-        cout << "╚════════════════════════════════════════╝\n\n";
+        cout << "\n========================================\n";
+        cout << "     NUMBER GUESSING GAME\n";
+        cout << "========================================\n\n";
         cout << "I'm thinking of a number between " << lowerBound 
              << " and " << upperBound << ".\n";
         cout << "You have " << maxAttempts << " attempts to guess it!\n";
-        cout << "Good luck! 🍀\n\n";
+        cout << "Good luck!\n\n";
     }
 
     bool makeGuess() {
@@ -46,14 +46,14 @@ public:
         if (guess == secretNumber) {
             return true;
         } else if (guess < secretNumber) {
-            cout << "📈 Too low! Try a higher number.\n\n";
+            cout << ">> Too low! Try a higher number.\n\n";
         } else {
-            cout << "📉 Too high! Try a lower number.\n\n";
+            cout << "<< Too high! Try a lower number.\n\n";
         }
 
         // Give hints when running out of attempts
         if (attempts == maxAttempts - 2) {
-            cout << "💡 Hint: The number is " 
+            cout << "HINT: The number is " 
                  << (secretNumber % 2 == 0 ? "EVEN" : "ODD") << "\n\n";
         }
 
@@ -62,23 +62,23 @@ public:
 
     void displayResult(bool won) {
         if (won) {
-            cout << "\n🎉 CONGRATULATIONS! 🎉\n";
+            cout << "\n*** CONGRATULATIONS! ***\n";
             cout << "You guessed the number " << secretNumber 
                  << " in " << attempts << " attempt(s)!\n";
             
             if (attempts == 1) {
-                cout << "WOW! First try! Are you psychic? 🔮\n";
+                cout << "WOW! First try! Are you psychic?\n";
             } else if (attempts <= 3) {
-                cout << "Amazing! You're really good at this! ⭐\n";
+                cout << "Amazing! You're really good at this!\n";
             } else if (attempts <= 5) {
-                cout << "Nice job! Well played! 👍\n";
+                cout << "Nice job! Well played!\n";
             } else {
-                cout << "You made it! That was close! 😅\n";
+                cout << "You made it! That was close!\n";
             }
         } else {
-            cout << "\n💔 Game Over!\n";
+            cout << "\n*** Game Over! ***\n";
             cout << "The number was: " << secretNumber << "\n";
-            cout << "Better luck next time! 🎲\n";
+            cout << "Better luck next time!\n";
         }
     }
 
@@ -107,13 +107,13 @@ int main() {
         NumberGuessingGame game(1, 100, 7);
         game.play();
         
-        cout << "\n🔄 Want to play again? (y/n): ";
+        cout << "\nWant to play again? (y/n): ";
         cin >> playAgain;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         
     } while (playAgain == 'y' || playAgain == 'Y');
     
-    cout << "\nThanks for playing! Goodbye! 👋\n\n";
+    cout << "\nThanks for playing! Goodbye!\n\n";
     
     return 0;
 }
